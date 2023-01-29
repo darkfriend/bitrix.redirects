@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * @author darkfriend <hi@darkfriend.ru>
- * @version 1.0.2
+ * @version 1.0.1
  */
 use \Bitrix\Main\Localization\Loc;
 
@@ -23,13 +23,21 @@ $tabControl->BeginNextTab();
                             <h2 id="yaPay"
                                 class="c-heading u-large"><?= Loc::getMessage('LABEL_TITLE_HELP_DONATE_TEXT'); ?></h2>
                             <iframe
-                                src="https://money.yandex.ru/quickpay/shop-widget?writer=seller&targets=%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0%20%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D1%85%20%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B5%D0%B9&targets-hint=&default-sum=500&button-text=14&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011413398643"
+                                src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0%20%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D1%85%20%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B5%D0%B9&targets-hint=&default-sum=500&button-text=14&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410011413398643"
                                 width="450" height="228" frameborder="0" allowtransparency="true"
                                 scrolling="no"></iframe>
                             <h2 id="morePay"
                                 class="c-heading u-large"><?= Loc::getMessage('LABEL_TITLE_HELP_DONATE_ALL_TEXT'); ?></h2>
                             <table class="c-table">
                                 <tbody class="c-table__body c-table--striped">
+                                <tr class="c-table__row">
+                                    <td class="c-table__cell">Tinkoff Bank and Bank Card</td>
+                                    <td class="c-table__cell">
+                                        <a href="https://www.tinkoff.ru/cf/36wVfnMf7mo" target="_blank">
+                                            https://www.tinkoff.ru/cf/36wVfnMf7mo
+                                        </a>
+                                    </td>
+                                </tr>
                                 <tr class="c-table__row">
                                     <td class="c-table__cell">Yandex.Money</td>
                                     <td class="c-table__cell">410011413398643</td>

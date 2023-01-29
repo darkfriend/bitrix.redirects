@@ -3,10 +3,12 @@ IncludeModuleLangFile(__FILE__);
 /**
  * @author dev2fun (darkfriend)
  * @copyright darkfriend
- * @version 1.0.0
+ * @version 1.0.1
  */
-include_once __DIR__.'/../vendor/autoload.php';
-if (class_exists('dev2fun_redirects')) return;
+include_once __DIR__ . '/../vendor/autoload.php';
+if (class_exists('dev2fun_redirects')) {
+    return;
+}
 
 use Bitrix\Main\ModuleManager,
     Bitrix\Main\EventManager;
@@ -26,14 +28,14 @@ Loader::registerAutoLoadClasses(
 
 class dev2fun_redirects extends CModule
 {
-    var $MODULE_ID = 'dev2fun.redirects';
-    var $MODULE_VERSION;
-    var $MODULE_VERSION_DATE;
-    var $MODULE_NAME;
-    var $MODULE_DESCRIPTION;
-    var $MODULE_GROUP_RIGHTS = "Y";
+    public $MODULE_ID = 'dev2fun.redirects';
+    public $MODULE_VERSION;
+    public $MODULE_VERSION_DATE;
+    public $MODULE_NAME;
+    public $MODULE_DESCRIPTION;
+    public $MODULE_GROUP_RIGHTS = "Y";
 
-    public function dev2fun_redirects()
+    public function __construct()
     {
         include(__DIR__ . "/version.php");
         $this->MODULE_VERSION = $arModuleVersion['VERSION'];

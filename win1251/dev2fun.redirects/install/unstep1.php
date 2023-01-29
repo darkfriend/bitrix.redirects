@@ -1,8 +1,8 @@
-<?
+<?php
 /**
  * @author dev2fun (darkfriend)
  * @copyright darkfriend
- * @version 0.1.1
+ * @version 1.0.1
  */
 if (!check_bitrix_sessid()) return;
 IncludeModuleLangFile(__FILE__);
