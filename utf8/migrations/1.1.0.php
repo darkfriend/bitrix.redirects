@@ -108,6 +108,20 @@ if ($hlId) {
             ],
         ]);
     }
+
+    $arSite = \CSite::GetList(
+        ($by = "sort"),
+        ($order = "asc"),
+        [
+            'ACTIVE' => 'Y',
+            'DEFAULT' => 'Y',
+        ]
+    )->GetNext();
+    if ($arSite) {
+        foreach ($hl->getElementList($hlId) as $item) {
+            $hl->updateElement($hlId, $item['ID'], ['UF_SITE_ID' => $arSite['LID']]);
+        }
+    }
 }
 
 echo '1.1.0 - DONE'.PHP_EOL;
