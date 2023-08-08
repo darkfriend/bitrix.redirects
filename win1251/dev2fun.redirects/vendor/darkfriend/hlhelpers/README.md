@@ -8,9 +8,13 @@
     + [Получить все highloadblock](#ListHighloadBlock)
     + [Создать HighloadBlockTable](#CreateHighloadBlock)
     + [Добавить поле в HighloadBlockTable](#AddFieldHighloadBlock)
+    + [Обновить поле в HighloadBlockTable по ID](#UpdateFieldHighloadBlock)
+    + [Обновить поле в HighloadBlockTable по UF_NAME](#UpdateFieldHighloadBlockByUF)
+    + [Удалить поле или поля в HighloadBlockTable](#DeleteFieldHighloadBlock)
     + [Удалить HighloadBlockTable](#DeleteHighloadBlock)
 * Работа с элементами
     + [Получить все элементы](#ListElements)
+    + [Получить количество строк](#CountElements)
     + [Добавить новый элемент](#AddElement)
     + [Обновить элемент](#UpdateElement)
     + [Удалить элемент](#DelElement)
@@ -82,6 +86,74 @@
 ?>
 ```
 
+### <a name="UpdateFieldHighloadBlock"></a> Обновить поле в HighloadBlockTable по ID
+
+```php
+<?php
+    use Darkfriend\HLHelpers;
+    $hlblockID = 1;
+    $fieldID = 1;
+    $arField = [
+        'SORT' => '100',
+        'MANDATORY' => 'Y',
+        'SETTINGS' => [
+            'DEFAULT_VALUE' => 'empty',
+        ],
+        'EDIT_FORM_LABEL' => [
+            'ru' => 'Тестовое поле',
+            'en' => 'Test field',
+        ],
+        'LIST_COLUMN_LABEL' => [
+            'ru' => 'Тестовое поле',
+            'en' => 'Test field',
+        ],
+    ];
+    $id = HLHelpers::getInstance()->updateField($hlblockID, $fieldID, $arField);
+    print_r($id); // bool, как результат
+?>
+```
+
+### <a name="UpdateFieldHighloadBlockByUF"></a> Обновить поле в HighloadBlockTable по UF_NAME
+
+```php
+<?php
+    use Darkfriend\HLHelpers;
+    $hlblockID = 1;
+    $ufName = 'UF_TEST';
+    $arField = [
+        'SORT' => '100',
+        'MANDATORY' => 'Y',
+        'SETTINGS' => [
+            'DEFAULT_VALUE' => 'empty',
+        ],
+        'EDIT_FORM_LABEL' => [
+            'ru' => 'Тестовое поле',
+            'en' => 'Test field',
+        ],
+        'LIST_COLUMN_LABEL' => [
+            'ru' => 'Тестовое поле',
+            'en' => 'Test field',
+        ],
+    ];
+    $id = HLHelpers::getInstance()->updateFieldByName($hlblockID, $ufName, $arField);
+    print_r($id); // bool, как результат
+?>
+```
+
+### <a name="DeleteFieldHighloadBlock"></a> Удалить поле или поля в HighloadBlockTable
+
+```php
+<?php
+    use Darkfriend\HLHelpers;
+    $hlblockID = 1;
+    $result = HLHelpers::getInstance()->removeFields($hlblockID,[
+        'UF_FIELD_1',
+        'UF_FIELD_2',
+    ]);
+    print_r($result); // true|false
+?>
+```
+
 ### <a name="DeleteHighloadBlock"></a> Удалить HighloadBlockTable
 
 ```php
@@ -112,6 +184,18 @@
     
     $arHlElements = HLHelpers::getInstance()->getElementList($hlID);
     print_r($arHlElements);
+?>
+```
+
+### <a name="CountElements"></a> Получить количество строк в highloadblock
+
+```php
+<?php 
+    use Darkfriend\HLHelpers;
+    $hlID = 1; // идентификатор highloadblock
+    $filters = ['UF_FIELD_FIILTER'=>1];
+    $totalElements = HLHelpers::getInstance()->getTotalCount($hlID, $filters);
+    print_r($totalElements);
 ?>
 ```
   

@@ -3,7 +3,7 @@ IncludeModuleLangFile(__FILE__);
 /**
  * @author dev2fun (darkfriend)
  * @copyright darkfriend
- * @version 1.0.1
+ * @version 1.1.0
  */
 include_once __DIR__ . '/../vendor/autoload.php';
 if (class_exists('dev2fun_redirects')) {
@@ -12,10 +12,8 @@ if (class_exists('dev2fun_redirects')) {
 
 use Bitrix\Main\ModuleManager,
     Bitrix\Main\EventManager;
-use Bitrix\Main\Application;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc,
-    Bitrix\Main\IO\Directory,
     Bitrix\Main\Config\Option;
 
 Loader::registerAutoLoadClasses(
@@ -28,12 +26,12 @@ Loader::registerAutoLoadClasses(
 
 class dev2fun_redirects extends CModule
 {
-    public $MODULE_ID = 'dev2fun.redirects';
-    public $MODULE_VERSION;
-    public $MODULE_VERSION_DATE;
-    public $MODULE_NAME;
-    public $MODULE_DESCRIPTION;
-    public $MODULE_GROUP_RIGHTS = "Y";
+    var $MODULE_ID = 'dev2fun.redirects';
+    var $MODULE_VERSION;
+    var $MODULE_VERSION_DATE;
+    var $MODULE_NAME;
+    var $MODULE_DESCRIPTION;
+    var $MODULE_GROUP_RIGHTS = "Y";
 
     public function __construct()
     {
@@ -100,49 +98,127 @@ class dev2fun_redirects extends CModule
         $hl->addField($hlId, [
             'FIELD_NAME' => 'UF_URL_FROM',
             'USER_TYPE_ID' => 'string',
-            'SORT' => '100',
+            'SORT' => 100,
             'MULTIPLE' => 'N',
             'MANDATORY' => 'Y',
+            'IS_SEARCHABLE' => 'Y',
             'EDIT_FORM_LABEL' => [
-                'ru' => 'Старый URL',
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_URL_FROM_EDIT_FORM_LABEL', null, 'ru'),
                 'en' => 'From URL',
             ],
             'LIST_COLUMN_LABEL' => [
-                'ru' => 'Старый URL',
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_URL_FROM_EDIT_FORM_LABEL', null, 'ru'),
                 'en' => 'From URL',
             ],
         ]);
         $hl->addField($hlId, [
             'FIELD_NAME' => 'UF_URL_TO',
             'USER_TYPE_ID' => 'string',
-            'SORT' => '200',
+            'SORT' => 200,
             'MULTIPLE' => 'N',
             'MANDATORY' => 'Y',
+            'IS_SEARCHABLE' => 'Y',
             'EDIT_FORM_LABEL' => [
-                'ru' => 'Новый URL',
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_URL_TO_EDIT_FORM_LABEL', null, 'ru'),
                 'en' => 'To URL',
             ],
             'LIST_COLUMN_LABEL' => [
-                'ru' => 'Новый URL',
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_URL_TO_EDIT_FORM_LABEL', null, 'ru'),
                 'en' => 'To URL',
+            ],
+        ]);
+        $hl->addField($hlId, [
+            'FIELD_NAME' => 'UF_SITE_ID',
+            'USER_TYPE_ID' => 'string',
+            'XML_ID' => 'SITE_ID',
+            'SORT' => 300,
+            'MULTIPLE' => 'N',
+            'MANDATORY' => 'N',
+            'IS_SEARCHABLE' => 'Y',
+            'EDIT_FORM_LABEL' => [
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_SITE_ID_EDIT_FORM_LABEL', null, 'ru'),
+//                'ru' => 'Идентификатор сайта',
+                'en' => 'Site id',
+            ],
+            'LIST_COLUMN_LABEL' => [
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_SITE_ID_LIST_COLUMN_LABEL', null, 'ru'),
+//                'ru' => 'Cайт',
+                'en' => 'Site id',
             ],
         ]);
         $hl->addField($hlId, [
             'FIELD_NAME' => 'UF_SORT',
             'USER_TYPE_ID' => 'integer',
-            'SORT' => '300',
+            'SORT' => 400,
             'MULTIPLE' => 'N',
             'MANDATORY' => 'N',
+            'IS_SEARCHABLE' => 'Y',
             'SETTINGS' => [
                 'DEFAULT_VALUE' => 500,
             ],
             'EDIT_FORM_LABEL' => [
-                'ru' => 'Сортировка',
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_SORT_EDIT_FORM_LABEL', null, 'ru'),
+//                'ru' => 'Сортировка',
                 'en' => 'Sort',
             ],
             'LIST_COLUMN_LABEL' => [
-                'ru' => 'Сортировка',
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_SORT_EDIT_FORM_LABEL', null, 'ru'),
+//                'ru' => 'Сортировка',
                 'en' => 'Sort',
+            ],
+        ]);
+        $hl->addField($hlId, [
+            'FIELD_NAME' => 'UF_STATUS_CODE',
+            'USER_TYPE_ID' => 'integer',
+            'XML_ID' => 'STATUS_CODE',
+            'SORT' => 500,
+            'MULTIPLE' => 'N',
+            'MANDATORY' => 'N',
+            'SETTINGS' => [
+                'DEFAULT_VALUE' => 302,
+            ],
+            'EDIT_FORM_LABEL' => [
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_STATUS_CODE_EDIT_FORM_LABEL', null, 'ru'),
+//                'ru' => 'Код статуса (301 или 302)',
+                'en' => 'Status code (301 or 302)',
+            ],
+            'LIST_COLUMN_LABEL' => [
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_STATUS_CODE_LIST_COLUMN_LABEL', null, 'ru'),
+//                'ru' => 'Код статуса',
+                'en' => 'Status code',
+            ],
+        ]);
+        $hl->addField($hlId, [
+            'FIELD_NAME' => 'UF_NOT_FOUND_MODE',
+            'USER_TYPE_ID' => 'boolean',
+            'XML_ID' => 'NOT_FOUND_MODE',
+            'SORT' => 600,
+            'MULTIPLE' => 'N',
+            'MANDATORY' => 'N',
+            'SETTINGS' => [
+                'DEFAULT_VALUE' => 0,
+                'DISPLAY' => 'CHECKBOX',
+                'LABEL' => [
+                    '',
+                    '',
+                ],
+                'LABEL_CHECKBOX' => Loc::getMessage('D2F_REDIRECTS_UF_NOT_FOUND_MODE_LABEL_CHECKBOX', null, 'ru'),
+//                'LABEL_CHECKBOX' => 'Срабатывать только при 404',
+            ],
+            'EDIT_FORM_LABEL' => [
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_NOT_FOUND_MODE_EDIT_FORM_LABEL', null, 'ru'),
+//                'ru' => 'Срабатывать только при 404 ошибке',
+                'en' => 'Work only to 404 error',
+            ],
+            'LIST_COLUMN_LABEL' => [
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_NOT_FOUND_MODE_LIST_COLUMN_LABEL', null, 'ru'),
+//                'ru' => 'Только при 404',
+                'en' => 'Only to 404',
+            ],
+            'HELP_MESSAGE' => [
+                'ru' => Loc::getMessage('D2F_REDIRECTS_UF_NOT_FOUND_MODE_HELP_MESSAGE', null, 'ru'),
+//                'ru' => 'При "Да" редирект срабатывает только если код статуса 404',
+                'en' => '',
             ],
         ]);
         return $hlId;
@@ -153,7 +229,7 @@ class dev2fun_redirects extends CModule
         $eventManager = EventManager::getInstance();
         $eventManager->registerEventHandler(
             'main',
-            'OnEpilog',
+            'OnPageStart',
             $this->MODULE_ID,
             'Dev2fun\\Redirects\\Base',
             'InitRedirects'
@@ -210,7 +286,7 @@ class dev2fun_redirects extends CModule
     public function unRegisterEvents()
     {
         $eventManager = EventManager::getInstance();
-        $eventManager->unRegisterEventHandler('main', 'OnEpilog', $this->MODULE_ID);
+        $eventManager->unRegisterEventHandler('main', 'OnPageStart', $this->MODULE_ID);
         return true;
     }
 }

@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit6d2985df50e2afdbed07ec5052d98851
 {
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Darkfriend\\HLHelpers' => __DIR__ . '/..' . '/darkfriend/hlhelpers/HLHelpers.php',
     );
 

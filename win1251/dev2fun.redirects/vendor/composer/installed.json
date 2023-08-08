@@ -1,48 +1,57 @@
-[
-    {
-        "name": "darkfriend/hlhelpers",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/darkfriend/hlhelpers.git",
-            "reference": "6174644d70eb1961368502ef57b7270a6ce10b5a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/darkfriend/hlhelpers/zipball/6174644d70eb1961368502ef57b7270a6ce10b5a",
-            "reference": "6174644d70eb1961368502ef57b7270a6ce10b5a",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4"
-        },
-        "time": "2020-03-30T23:23:54+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "./HLHelpers.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "authors": [
-            {
-                "name": "darkfriend",
-                "email": "hi@darkfriend.ru"
-            }
-        ],
-        "description": "Helper for Highloadblock Bitrix",
-        "homepage": "https://github.com/darkfriend/hlhelpers",
-        "keywords": [
-            "1C-Bitrix",
-            "bitrix",
-            "darkfriend",
-            "dev",
-            "development",
-            "helper",
-            "highload",
-            "highloadblock"
-        ]
-    }
-]
+{
+    "packages": [
+        {
+            "name": "darkfriend/hlhelpers",
+            "version": "1.0.5",
+            "version_normalized": "1.0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/darkfriend/hlhelpers.git",
+                "reference": "2e84b30841f6aad3072d9e7874ef568cc31507f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/darkfriend/hlhelpers/zipball/2e84b30841f6aad3072d9e7874ef568cc31507f0",
+                "reference": "2e84b30841f6aad3072d9e7874ef568cc31507f0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "time": "2021-12-26T22:28:09+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "./HLHelpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "darkfriend",
+                    "email": "hi@darkfriend.ru"
+                }
+            ],
+            "description": "Helper for Highloadblock Bitrix",
+            "homepage": "https://github.com/darkfriend/hlhelpers",
+            "keywords": [
+                "1C-Bitrix",
+                "bitrix",
+                "darkfriend",
+                "dev",
+                "development",
+                "helper",
+                "highload",
+                "highloadblock"
+            ],
+            "support": {
+                "issues": "https://github.com/darkfriend/hlhelpers/issues",
+                "source": "https://github.com/darkfriend/hlhelpers/tree/1.0.5"
+            },
+            "install-path": "../darkfriend/hlhelpers"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
